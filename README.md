@@ -14,20 +14,22 @@ This will install application globally so that it may be run from the command li
 ```
 import { WavesHelper } from "waves-helper"
 
-const WH = WavesHelper.init()
+const WH = new WavesHelper()
 
-...
-
-console.log(WH.getCurrenciesInformation("WAVES"))
+setTimeout(() => {
+    console.log(WH.getRate("EGG"))
+}, 5000)
 
 ```
 
 ### Available methods:
-
-- getCurrenciesInformation
-- convertAmount
-- getRate
-- getCourseToCourse
+ 
+| Method name 	            | Method description         	                        |
+|--------------------------	|------------------------------------------------------	|
+| getCurrenciesInformation 	| Getting information by platformId or AssetId         	|
+| convertAmount            	| Converts a number between blockchain format and code 	|
+| getRate                  	| Getting an approximate dollar rate                   	|
+| getRateToRate            	| Getting rate to rate                                 	| 
 
 ## License
 
