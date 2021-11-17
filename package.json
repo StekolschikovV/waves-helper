@@ -1,0 +1,31 @@
+{
+  "name": "waves-helper",
+  "version": "0.0.1",
+  "description": "Simplification techniques for working with waves blockchain",
+  "main": "lib/index.js",
+  "types": "lib",
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -w",
+    "publish": "npm publish"
+  },
+  "keywords": [
+    "waves",
+    "blockchain",
+    "rate",
+    "currencies",
+    "convert"
+  ],
+  "author": "StekolschikovV",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StekolschikovV/chatex.git"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
+}
