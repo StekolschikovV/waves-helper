@@ -1,6 +1,6 @@
 {
   "name": "waves-helper",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Simplification techniques for working with waves blockchain",
   "main": "lib/index.js",
   "types": "lib",
@@ -20,7 +20,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StekolschikovV/chatex.git"
+    "url": "git+https://github.com/StekolschikovV/waves-helper.git"
   },
   "dependencies": {
     "axios": "^0.24.0"
