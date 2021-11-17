@@ -75,9 +75,9 @@ class WavesHelper {
     }
 
     /**
-     * Getting course to course
+     * Getting rate to rate
      */
-    getCourseToCourse(platformIdOrAssetIdOne: string, platformIdOrAssetIdTow: string): null | number {
+    getRateToRate(platformIdOrAssetIdOne: string, platformIdOrAssetIdTow: string): null | number {
         const rateOne = this.getRate(platformIdOrAssetIdOne)
         const rateTow = this.getRate(platformIdOrAssetIdTow)
         if (rateOne === null || rateTow === null) return null
