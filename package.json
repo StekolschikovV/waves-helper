@@ -1,6 +1,6 @@
 {
   "name": "waves-helper",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Simplification techniques for working with waves blockchain",
   "main": "lib/index.js",
   "types": "lib",

@@ -2,13 +2,17 @@ import axios from "axios";
 import {ICurrency, IRate} from "./interface";
 import {URL_CURRENCIES, URL_RATE} from "./const";
 
-class WavesHelper {
+export class WavesHelper {
 
     private isInit = false
     private currencies: ICurrency[] = []
     private rate: IRate[] = []
+    
+    constructor() {
+        this.init()
+    }
 
-    public init(): void {
+    private init(): void {
         if (!this.isInit) {
             this.isInit = true
             this.loadCurrenciesInformation()
