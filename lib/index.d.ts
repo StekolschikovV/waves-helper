@@ -1,5 +1,5 @@
-import { ICurrency } from "./interface";
-export declare class WavesHelper {
+import { EConvertFormat, ICurrency, IWavesHelper } from "./interface";
+export declare class WavesHelper implements IWavesHelper {
     private isInit;
     private currencies;
     private rate;
@@ -20,7 +20,7 @@ export declare class WavesHelper {
     /**
      * Converts a number between blockchain format and code
      */
-    convertAmount(fromFormat: "blockchain" | "code", toFormat: "blockchain" | "code", platformIdOrAssetId: string, amount: number): null | number;
+    convertAmount(fromFormat: EConvertFormat, toFormat: EConvertFormat, platformIdOrAssetId: string, amount: number): null | number;
     /**
      * Getting an approximate dollar rate
      */

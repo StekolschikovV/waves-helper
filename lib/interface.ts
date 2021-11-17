@@ -1,3 +1,8 @@
+export enum EConvertFormat {
+    "blockchain" = "blockchain",
+    "code" = "code"
+}
+
 export interface ICurrency {
     allowed_amount: {
         max: number
@@ -43,4 +48,11 @@ export interface IRate {
     volume7d: string
     volume24: string
     volume_current_period: string
+}
+
+export interface IWavesHelper {
+    getCurrenciesInformation(platformIdOrAssetId: string): ICurrency | null
+    convertAmount(fromFormat: EConvertFormat, toFormat: EConvertFormat, platformIdOrAssetId: string, amount: number): null | number
+    getRate(platformIdOrAssetId: string): null | number
+    getRateToRate(platformIdOrAssetIdOne: string, platformIdOrAssetIdTow: string): null | number
 }

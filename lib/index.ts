@@ -1,13 +1,13 @@
 import axios from "axios";
-import {ICurrency, IRate} from "./interface";
+import {EConvertFormat, ICurrency, IRate, IWavesHelper} from "./interface";
 import {URL_CURRENCIES, URL_RATE} from "./const";
 
-export class WavesHelper {
+export class WavesHelper implements IWavesHelper{
 
     private isInit = false
     private currencies: ICurrency[] = []
     private rate: IRate[] = []
-    
+
     constructor() {
         this.init()
     }
@@ -54,11 +54,11 @@ export class WavesHelper {
     /**
      * Converts a number between blockchain format and code
      */
-    public convertAmount(fromFormat: "blockchain" | "code", toFormat: "blockchain" | "code", platformIdOrAssetId: string, amount: number): null | number {
+    public convertAmount(fromFormat: EConvertFormat, toFormat: EConvertFormat, platformIdOrAssetId: string, amount: number): null | number {
         if (fromFormat === toFormat) return null
         const assetInfo = this.getCurrenciesInformation(platformIdOrAssetId)
         let result: null | number = null
-        if (assetInfo && fromFormat === "blockchain") result = amount / (+("1" + "0".repeat(assetInfo.decimals)))
+        if (assetInfo && fromFormat === EConvertFormat.blockchain) result = amount / (+("1" + "0".repeat(assetInfo.decimals)))
         else if (assetInfo) result = amount * (+("1" + "0".repeat(assetInfo.decimals)))
         return result
     }
@@ -81,7 +81,7 @@ export class WavesHelper {
     /**
      * Getting rate to rate
      */
-    getRateToRate(platformIdOrAssetIdOne: string, platformIdOrAssetIdTow: string): null | number {
+    public getRateToRate(platformIdOrAssetIdOne: string, platformIdOrAssetIdTow: string): null | number {
         const rateOne = this.getRate(platformIdOrAssetIdOne)
         const rateTow = this.getRate(platformIdOrAssetIdTow)
         if (rateOne === null || rateTow === null) return null
