@@ -15,15 +15,15 @@ export class WavesHelper implements IWavesHelper{
     private init(): void {
         if (!this.isInit) {
             this.isInit = true
-            this.loadCurrenciesInformation()
-            this.loadRateInformation()
+            this.loadCurrencies()
+            this.loadRate()
         }
     }
 
     /**
      * Loading information about currencies
      */
-    private async loadCurrenciesInformation(): Promise<void> {
+    private async loadCurrencies(): Promise<void> {
         this.currencies = (await axios.get(URL_CURRENCIES)).data.items.map((c: ICurrency) => {
             c.decimals = +(c.decimals + "")[(c.decimals + "").length - 1]
             return c
@@ -33,7 +33,7 @@ export class WavesHelper implements IWavesHelper{
     /**
      * Loading information about rate
      */
-    private async loadRateInformation(): Promise<void> {
+    private async loadRate(): Promise<void> {
         const {data} = (await axios.get(URL_RATE)).data;
         this.rate = Object.keys(data).map((rateIndex) => {
             return data[rateIndex]
@@ -43,7 +43,7 @@ export class WavesHelper implements IWavesHelper{
     /**
      * Getting information by platformId or AssetId
      */
-    public getCurrenciesInformation(platformIdOrAssetId: string): ICurrency | null {
+    public getCurrencies(platformIdOrAssetId: string): ICurrency | null {
         let result: ICurrency | null = null
         this.currencies.forEach(c => {
             if ((platformIdOrAssetId === c.id || platformIdOrAssetId === c.waves_asset_id) && result === null) result = c
@@ -56,7 +56,7 @@ export class WavesHelper implements IWavesHelper{
      */
     public convertAmount(fromFormat: EConvertFormat, toFormat: EConvertFormat, platformIdOrAssetId: string, amount: number): null | number {
         if (fromFormat === toFormat) return null
-        const assetInfo = this.getCurrenciesInformation(platformIdOrAssetId)
+        const assetInfo = this.getCurrencies(platformIdOrAssetId)
         let result: null | number = null
         if (assetInfo && fromFormat === EConvertFormat.blockchain) result = amount / (+("1" + "0".repeat(assetInfo.decimals)))
         else if (assetInfo) result = amount * (+("1" + "0".repeat(assetInfo.decimals)))
@@ -67,8 +67,8 @@ export class WavesHelper implements IWavesHelper{
      * Getting an approximate dollar rate
      */
     public getRate(platformIdOrAssetId: string): null | number {
-        const currency = this.getCurrenciesInformation(platformIdOrAssetId)
-        const currencyUSDN = this.getCurrenciesInformation("USDN")
+        const currency = this.getCurrencies(platformIdOrAssetId)
+        const currencyUSDN = this.getCurrencies("USDN")
         if (currency === null || currencyUSDN === null) return null
         let resultRate: IRate[] = this.rate.filter(r =>
             (r.A_asset_id === currency.waves_asset_id || r.A_asset_id === currency.id)

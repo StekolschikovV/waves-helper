@@ -4,7 +4,7 @@ Simplification techniques for working with waves blockchain
 
 ## Installing:
 
-You need to install [node.js](http://nodejs.org) first. Once you have it, install `сhatex` with command:
+You need to install [node.js](http://nodejs.org) first. Once you have it, install `waves-helper` with command:
 
     npm install waves-helper
 
@@ -26,7 +26,7 @@ setTimeout(() => {
  
 | Method name 	            | Method description         	                        |
 |--------------------------	|------------------------------------------------------	|
-| getCurrenciesInformation 	| Getting information by platformId or AssetId         	|
+| getCurrencies 	        | Getting information by platformId or AssetId         	|
 | convertAmount            	| Converts a number between blockchain format and code 	|
 | getRate                  	| Getting an approximate dollar rate                   	|
 | getRateToRate            	| Getting rate to rate                                 	| 

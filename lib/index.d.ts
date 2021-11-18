@@ -8,15 +8,15 @@ export declare class WavesHelper implements IWavesHelper {
     /**
      * Loading information about currencies
      */
-    private loadCurrenciesInformation;
+    private loadCurrencies;
     /**
      * Loading information about rate
      */
-    private loadRateInformation;
+    private loadRate;
     /**
      * Getting information by platformId or AssetId
      */
-    getCurrenciesInformation(platformIdOrAssetId: string): ICurrency | null;
+    getCurrencies(platformIdOrAssetId: string): ICurrency | null;
     /**
      * Converts a number between blockchain format and code
      */

@@ -51,7 +51,7 @@ export interface IRate {
 }
 
 export interface IWavesHelper {
-    getCurrenciesInformation(platformIdOrAssetId: string): ICurrency | null
+    getCurrencies(platformIdOrAssetId: string): ICurrency | null
     convertAmount(fromFormat: EConvertFormat, toFormat: EConvertFormat, platformIdOrAssetId: string, amount: number): null | number
     getRate(platformIdOrAssetId: string): null | number
     getRateToRate(platformIdOrAssetIdOne: string, platformIdOrAssetIdTow: string): null | number
